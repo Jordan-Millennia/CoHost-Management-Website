@@ -6,3 +6,8 @@ node_modules/
 .vscode/
 .idea/
 thumbs.db
+/.next/
+/out/
+/_backup
+*.tsbuildinfo
+next-env.d.ts
