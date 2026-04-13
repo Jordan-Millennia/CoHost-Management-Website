@@ -1,0 +1,9 @@
+1:"$Sreact.fragment"
+2:I[18323,["/CoHost-Management-Website/_next/static/chunks/0gi1dcl00zz3o.js","/CoHost-Management-Website/_next/static/chunks/06stmf_m2iuu8.js"],"ClientPageRoot"]
+3:I[25447,["/CoHost-Management-Website/_next/static/chunks/0gi1dcl00zz3o.js","/CoHost-Management-Website/_next/static/chunks/06stmf_m2iuu8.js","/CoHost-Management-Website/_next/static/chunks/0vh-8apvm1a6g.js","/CoHost-Management-Website/_next/static/chunks/0rp~d8~_mlpz_.js"],"default"]
+6:I[47351,["/CoHost-Management-Website/_next/static/chunks/0gi1dcl00zz3o.js","/CoHost-Management-Website/_next/static/chunks/06stmf_m2iuu8.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"Component":"$3","serverProvidedParams":{"searchParams":{},"params":{},"promises":["$@4","$@5"]}}],[["$","script","script-0",{"src":"/CoHost-Management-Website/_next/static/chunks/0vh-8apvm1a6g.js","async":true}],["$","script","script-1",{"src":"/CoHost-Management-Website/_next/static/chunks/0rp~d8~_mlpz_.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"LQ5pgkofQ6vc4KUfQa-y1"}
+4:{}
+5:"$0:rsc:props:children:0:props:serverProvidedParams:params"
+8:null
