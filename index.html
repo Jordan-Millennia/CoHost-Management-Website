@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CoHost Management — Intelligent Property Management</title>
+  <meta name="description" content="National done-for-you property management for STR, MTR, LTR, and PadSplit co-living. Tech-forward operations, transparent reporting, maximum returns.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Syne:wght@800&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/main.css">
+
+  <!-- CDN Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Circuit board base -->
+          <rect x="2" y="18" width="32" height="16" rx="2" stroke="#00DDB8" stroke-width="1.5" fill="none"/>
+          <line x1="8" y1="18" x2="8" y2="34" stroke="#00DDB8" stroke-width="0.75" opacity="0.4"/>
+          <line x1="18" y1="18" x2="18" y2="34" stroke="#00DDB8" stroke-width="0.75" opacity="0.4"/>
+          <line x1="28" y1="18" x2="28" y2="34" stroke="#00DDB8" stroke-width="0.75" opacity="0.4"/>
+          <line x1="2" y1="26" x2="34" y2="26" stroke="#00DDB8" stroke-width="0.75" opacity="0.4"/>
+          <circle cx="8" cy="22" r="1.5" fill="#00DDB8" opacity="0.6"/>
+          <circle cx="18" cy="30" r="1.5" fill="#00DDB8" opacity="0.6"/>
+          <circle cx="28" cy="22" r="1.5" fill="#2E7BEF" opacity="0.6"/>
+          <!-- Buildings -->
+          <rect x="5" y="8" width="7" height="10" rx="1" stroke="#2E7BEF" stroke-width="1.5" fill="none"/>
+          <rect x="14" y="3" width="8" height="15" rx="1" stroke="#00DDB8" stroke-width="1.5" fill="none"/>
+          <rect x="24" y="6" width="7" height="12" rx="1" stroke="#2E7BEF" stroke-width="1.5" fill="none"/>
+          <!-- Windows -->
+          <rect x="7" y="10" width="2" height="2" rx="0.5" fill="#2E7BEF" opacity="0.5"/>
+          <rect x="16" y="5" width="2" height="2" rx="0.5" fill="#00DDB8" opacity="0.5"/>
+          <rect x="19" y="5" width="2" height="2" rx="0.5" fill="#00DDB8" opacity="0.5"/>
+          <rect x="16" y="9" width="2" height="2" rx="0.5" fill="#00DDB8" opacity="0.5"/>
+          <rect x="19" y="9" width="2" height="2" rx="0.5" fill="#00DDB8" opacity="0.5"/>
+          <rect x="26" y="8" width="2" height="2" rx="0.5" fill="#2E7BEF" opacity="0.5"/>
+          <rect x="26" y="12" width="2" height="2" rx="0.5" fill="#2E7BEF" opacity="0.5"/>
+        </svg>
+        <span class="nav-logo-text"><span>Co</span>Host Management</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#how-it-works" class="nav-link">How It Works</a>
+        <a href="#portal" class="nav-link">Owner Portal</a>
+        <a href="#markets" class="nav-link">Markets</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#contact" class="nav-cta">Get a Free Analysis</a>
+      </div>
+
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <div class="nav-mobile" id="navMobile">
+      <a href="#services">Services</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#portal">Owner Portal</a>
+      <a href="#markets">Markets</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="btn btn-primary" style="text-align:center;margin-top:auto;">Get a Free Analysis</a>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <div class="hero-label">National Property Management</div>
+          <h1 class="hero-title">
+            <span class="line">Intelligent</span>
+            <span class="line"><span class="highlight">Property Management.</span></span>
+            <span class="line">Maximum Returns.</span>
+          </h1>
+          <p class="hero-subtitle">Done-for-you operations across short-term, mid-term, long-term, and co-living rentals. AI-powered communications, smart lock integration, and transparent owner reporting.</p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">Get a Free Analysis</a>
+            <a href="#portal" class="btn btn-secondary">View Owner Portal</a>
+          </div>
+          <div class="hero-badges">
+            <span class="hero-badge">PadSplit</span>
+            <span class="hero-badge">Airbnb</span>
+            <span class="hero-badge">VRBO</span>
+            <span class="hero-badge">Furnished Finder</span>
+            <span class="hero-badge">Booking.com</span>
+          </div>
+        </div>
+        <div class="hero-scene" id="heroScene"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stat Bar -->
+  <div class="stat-bar">
+    <div class="container">
+      <div class="stat-bar-inner">
+        <div class="stat-item">
+          <div class="stat-number" data-target="500" data-suffix="+">0</div>
+          <div class="stat-label">Units Managed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="94" data-suffix="%">0</div>
+          <div class="stat-label">Avg Occupancy</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="18" data-suffix="">0</div>
+          <div class="stat-label">Markets</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="0" data-prefix="$" data-suffix="">$0</div>
+          <div class="stat-label">Setup Fee</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SERVICES
+       ============================================================ -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-label reveal">Our Services</div>
+      <h2 class="section-title reveal">Full-Spectrum Property Management</h2>
+      <p class="section-subtitle reveal">From weekend getaways to long-term leases, we optimize every rental model for maximum returns.</p>
+
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3 class="service-title">Short-Term Rental</h3>
+          <p class="service-desc">Dynamic pricing, professional photography, multi-platform listing optimization, and 24/7 guest communications for maximum nightly rates.</p>
+          <div class="service-tags">
+            <span class="service-tag">Dynamic Pricing</span>
+            <span class="service-tag">Guest Comms</span>
+            <span class="service-tag">Multi-Platform</span>
+          </div>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3 class="service-title">Mid-Term Rental</h3>
+          <p class="service-desc">Furnished Finder and direct booking optimization for traveling professionals, insurance stays, and corporate housing. 30-90 day stays, premium rates.</p>
+          <div class="service-tags">
+            <span class="service-tag">Corporate Housing</span>
+            <span class="service-tag">Insurance Stays</span>
+            <span class="service-tag">Furnished</span>
+          </div>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3 class="service-title">Long-Term Rental</h3>
+          <p class="service-desc">Tenant screening, lease management, maintenance coordination, and rent collection. Hands-off ownership with consistent monthly cash flow.</p>
+          <div class="service-tags">
+            <span class="service-tag">Tenant Screening</span>
+            <span class="service-tag">Lease Mgmt</span>
+            <span class="service-tag">Maintenance</span>
+          </div>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3 class="service-title">Co-Living / PadSplit</h3>
+          <p class="service-desc">Room-by-room rental optimization through PadSplit. 2-3x gross revenue versus traditional leasing with shared living management handled end-to-end.</p>
+          <div class="service-tags">
+            <span class="service-tag">PadSplit</span>
+            <span class="service-tag">Room-by-Room</span>
+            <span class="service-tag">2-3x Revenue</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WHY COHOST
+       ============================================================ -->
+  <section class="section" id="why">
+    <div class="container">
+      <div class="why-inner">
+        <div class="why-left">
+          <div class="section-label reveal">Why CoHost</div>
+          <h2 class="section-title reveal">Built Different.<br>Backed by Data.</h2>
+          <p class="section-subtitle reveal">We combine institutional-grade operations with proptech innovation to deliver outsized returns across every rental model.</p>
+          <div class="why-stats">
+            <div class="why-stat-card reveal">
+              <div class="why-stat-number" data-target="94" data-suffix="%">0</div>
+              <div class="why-stat-label">Average Occupancy</div>
+            </div>
+            <div class="why-stat-card reveal">
+              <div class="why-stat-number" data-target="23" data-suffix="%">0</div>
+              <div class="why-stat-label">Revenue Increase</div>
+            </div>
+            <div class="why-stat-card reveal">
+              <div class="why-stat-number" data-target="4.8" data-suffix="" data-decimals="1">0</div>
+              <div class="why-stat-label">Avg Guest Rating</div>
+            </div>
+            <div class="why-stat-card reveal">
+              <div class="why-stat-number" data-target="2" data-suffix="hr">0</div>
+              <div class="why-stat-label">Avg Response Time</div>
+            </div>
+          </div>
+        </div>
+        <div class="why-right">
+          <div class="why-features">
+            <div class="why-feature reveal">
+              <div class="why-feature-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2a4 4 0 014 4c0 1.95-2 5-4 5s-4-3.05-4-5a4 4 0 014-4z"/><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+              </div>
+              <div>
+                <div class="why-feature-title">AI-Powered Communications</div>
+                <div class="why-feature-desc">Automated guest messaging, review responses, and owner updates powered by machine learning.</div>
+              </div>
+            </div>
+            <div class="why-feature reveal">
+              <div class="why-feature-icon">
+                <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+              </div>
+              <div>
+                <div class="why-feature-title">Smart Lock Integration</div>
+                <div class="why-feature-desc">TTLock and Cospace Locks for keyless entry, automated access codes, and real-time monitoring.</div>
+              </div>
+            </div>
+            <div class="why-feature reveal">
+              <div class="why-feature-icon">
+                <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              </div>
+              <div>
+                <div class="why-feature-title">Revenue Optimization</div>
+                <div class="why-feature-desc">Dynamic pricing across all platforms, comp analysis, and market-responsive rate adjustments.</div>
+              </div>
+            </div>
+            <div class="why-feature reveal">
+              <div class="why-feature-icon">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div>
+                <div class="why-feature-title">24/7 Operations</div>
+                <div class="why-feature-desc">Round-the-clock monitoring, emergency response, and guest support across all time zones.</div>
+              </div>
+            </div>
+            <div class="why-feature reveal">
+              <div class="why-feature-icon">
+                <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              </div>
+              <div>
+                <div class="why-feature-title">Transparent Reporting</div>
+                <div class="why-feature-desc">Real-time owner portal with revenue breakdowns, occupancy data, and maintenance tracking.</div>
+              </div>
+            </div>
+            <div class="why-feature reveal">
+              <div class="why-feature-icon">
+                <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+              </div>
+              <div>
+                <div class="why-feature-title">Multi-Platform Listing</div>
+                <div class="why-feature-desc">Synchronized listings across Airbnb, VRBO, Booking.com, Furnished Finder, PadSplit, and direct channels.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       HOW IT WORKS
+       ============================================================ -->
+  <section class="section" id="how-it-works">
+    <div class="container">
+      <div style="text-align:center; max-width:600px; margin:0 auto var(--space-2xl);">
+        <div class="section-label reveal">How It Works</div>
+        <h2 class="section-title reveal">Three Steps to Passive Income</h2>
+        <p class="section-subtitle reveal" style="margin:0 auto;">We handle every detail so you can focus on growing your portfolio — not managing it.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card reveal">
+          <div class="step-number">01</div>
+          <div class="step-label">Step 1</div>
+          <h3 class="step-title">Onboard</h3>
+          <p class="step-desc">Free property analysis, revenue projections, and a custom management plan. We handle setup, photography, listing creation, smart lock installation, and platform optimization.</p>
+        </div>
+
+        <div class="step-card reveal">
+          <div class="step-number">02</div>
+          <div class="step-label">Step 2</div>
+          <h3 class="step-title">We Operate</h3>
+          <p class="step-desc">Dynamic pricing, guest communications, cleaning coordination, maintenance, inspections, and 24/7 monitoring. Every operational detail handled by our team and tech stack.</p>
+        </div>
+
+        <div class="step-card reveal">
+          <div class="step-number">03</div>
+          <div class="step-label">Step 3</div>
+          <h3 class="step-title">Collect Returns</h3>
+          <p class="step-desc">Track revenue, occupancy, and expenses in your live owner portal. Automated payouts, transparent reporting, and ongoing optimization to maximize your returns.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       OWNER PORTAL
+       ============================================================ -->
+  <section class="section" id="portal">
+    <div class="container">
+      <div style="text-align:center; max-width:640px; margin:0 auto var(--space-md);">
+        <div class="section-label reveal">Owner Portal</div>
+        <h2 class="section-title reveal">Your Properties. Real-Time Data.</h2>
+        <p class="section-subtitle reveal" style="margin:0 auto;">Every metric, every payout, every work order — accessible 24/7 from any device.</p>
+      </div>
+
+      <div class="portal-wrapper reveal">
+        <div class="portal-tabs">
+          <button class="portal-tab active" data-tab="overview">Overview</button>
+          <button class="portal-tab" data-tab="revenue">Revenue</button>
+          <button class="portal-tab" data-tab="properties">Properties</button>
+          <button class="portal-tab" data-tab="maintenance">Maintenance</button>
+        </div>
+
+        <!-- Overview Tab -->
+        <div class="portal-panel active" id="tab-overview">
+          <div class="portal-kpis">
+            <div class="portal-kpi">
+              <div class="portal-kpi-label">Monthly Revenue</div>
+              <div class="portal-kpi-value">$47,280</div>
+              <div class="portal-kpi-delta positive">+12.3% vs last month</div>
+            </div>
+            <div class="portal-kpi">
+              <div class="portal-kpi-label">Occupancy Rate</div>
+              <div class="portal-kpi-value">94.2%</div>
+              <div class="portal-kpi-delta positive">+3.1% vs last month</div>
+            </div>
+            <div class="portal-kpi">
+              <div class="portal-kpi-label">Active Units</div>
+              <div class="portal-kpi-value">12</div>
+              <div class="portal-kpi-delta positive">+2 new this quarter</div>
+            </div>
+            <div class="portal-kpi">
+              <div class="portal-kpi-label">Open Work Orders</div>
+              <div class="portal-kpi-value">3</div>
+              <div class="portal-kpi-delta negative">1 high priority</div>
+            </div>
+          </div>
+
+          <div class="portal-charts">
+            <div class="portal-chart-card">
+              <div class="portal-chart-title">Monthly Revenue — Last 12 Months</div>
+              <canvas id="revenueChart" class="portal-chart-canvas"></canvas>
+            </div>
+            <div class="portal-chart-card">
+              <div class="portal-chart-title">Occupancy Breakdown</div>
+              <canvas id="occupancyChart" class="portal-chart-canvas"></canvas>
+            </div>
+          </div>
+
+          <div class="portal-properties">
+            <div class="portal-properties-header">
+              <span>Property</span>
+              <span>Type</span>
+              <span>Occupancy</span>
+              <span>Last Payout</span>
+              <span>Status</span>
+            </div>
+            <div class="portal-property-row">
+              <span>1842 Riverside Dr, Jacksonville</span>
+              <span>STR</span>
+              <span>97%</span>
+              <span>$4,180</span>
+              <span><span class="portal-status"><span class="portal-status-dot green"></span> Active</span></span>
+            </div>
+            <div class="portal-property-row">
+              <span>305 Palm Ave, Tampa</span>
+              <span>MTR</span>
+              <span>100%</span>
+              <span>$3,450</span>
+              <span><span class="portal-status"><span class="portal-status-dot green"></span> Active</span></span>
+            </div>
+            <div class="portal-property-row">
+              <span>927 Oak St, Orlando</span>
+              <span>PadSplit</span>
+              <span>92%</span>
+              <span>$5,820</span>
+              <span><span class="portal-status"><span class="portal-status-dot green"></span> Active</span></span>
+            </div>
+            <div class="portal-property-row">
+              <span>4401 Magnolia Blvd, Houston</span>
+              <span>LTR</span>
+              <span>100%</span>
+              <span>$2,100</span>
+              <span><span class="portal-status"><span class="portal-status-dot green"></span> Active</span></span>
+            </div>
+            <div class="portal-property-row">
+              <span>612 Bayshore Dr, Sarasota</span>
+              <span>STR</span>
+              <span>88%</span>
+              <span>$3,920</span>
+              <span><span class="portal-status"><span class="portal-status-dot yellow"></span> Maintenance</span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Revenue Tab -->
+        <div class="portal-panel" id="tab-revenue">
+          <div class="portal-kpis">
+            <div class="portal-kpi">
+              <div class="portal-kpi-label">Gross Revenue (YTD)</div>
+              <div class="portal-kpi-value">$412,840</div>
+              <div class="portal-kpi-delta positive">+18.7% vs last year</div>
+            </div>
+            <div class="portal-kpi">
+              <div class="portal-kpi-label">Net Payouts (YTD)</div>
+              <div class="portal-kpi-value">$329,272</div>
+              <div class="portal-kpi-delta positive">80% net margin</div>
+            </div>
+            <div class="portal-kpi">
+              <div class="portal-kpi-label">Avg Nightly Rate</div>
+              <div class="portal-kpi-value">$187</div>
+              <div class="portal-kpi-delta positive">+$22 vs market avg</div>
+            </div>
+            <div class="portal-kpi">
+              <div class="portal-kpi-label">MoM Growth</div>
+              <div class="portal-kpi-value">+12.3%</div>
+              <div class="portal-kpi-delta positive">Trending up</div>
+            </div>
+          </div>
+
+          <div class="portal-charts">
+            <div class="portal-chart-card">
+              <div class="portal-chart-title">Revenue by Month</div>
+              <canvas id="revenueDetailChart" class="portal-chart-canvas"></canvas>
+            </div>
+            <div class="portal-chart-card">
+              <div class="portal-chart-title">Revenue by Platform</div>
+              <canvas id="platformChart" class="portal-chart-canvas"></canvas>
+            </div>
+          </div>
+
+          <div class="portal-chart-card">
+            <div class="portal-chart-title">Platform Revenue Breakdown</div>
+            <div class="portal-breakdown" style="margin-top:var(--space-lg);">
+              <div>
+                <div class="portal-breakdown-item">
+                  <span class="portal-breakdown-platform">Airbnb</span>
+                  <span class="portal-breakdown-amount">$168,420</span>
+                </div>
+                <div class="portal-breakdown-item">
+                  <span class="portal-breakdown-platform">PadSplit</span>
+                  <span class="portal-breakdown-amount">$98,640</span>
+                </div>
+                <div class="portal-breakdown-item">
+                  <span class="portal-breakdown-platform">Furnished Finder</span>
+                  <span class="portal-breakdown-amount">$72,310</span>
+                </div>
+              </div>
+              <div>
+                <div class="portal-breakdown-item">
+                  <span class="portal-breakdown-platform">VRBO</span>
+                  <span class="portal-breakdown-amount">$41,280</span>
+                </div>
+                <div class="portal-breakdown-item">
+                  <span class="portal-breakdown-platform">Direct Bookings</span>
+                  <span class="portal-breakdown-amount">$24,150</span>
+                </div>
+                <div class="portal-breakdown-item">
+                  <span class="portal-breakdown-platform">Booking.com</span>
+                  <span class="portal-breakdown-amount">$8,040</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Properties Tab -->
+        <div class="portal-panel" id="tab-properties">
+          <div class="portal-properties">
+            <div class="portal-properties-header">
+              <span>Address</span>
+              <span>Type</span>
+              <span>Occupancy</span>
+              <span>Last Payout</span>
+              <span>Platforms</span>
+            </div>
+            <div class="portal-property-row">
+              <span>1842 Riverside Dr, Jacksonville FL</span>
+              <span>STR</span>
+              <span>97%</span>
+              <span>$4,180</span>
+              <span><span class="service-tag" style="margin:1px;">Airbnb</span><span class="service-tag" style="margin:1px;">VRBO</span></span>
+            </div>
+            <div class="portal-property-row">
+              <span>305 Palm Ave, Tampa FL</span>
+              <span>MTR</span>
+              <span>100%</span>
+              <span>$3,450</span>
+              <span><span class="service-tag" style="margin:1px;">FF</span></span>
+            </div>
+            <div class="portal-property-row">
+              <span>927 Oak St Unit A-D, Orlando FL</span>
+              <span>PadSplit</span>
+              <span>92%</span>
+              <span>$5,820</span>
+              <span><span class="service-tag" style="margin:1px;">PadSplit</span></span>
+            </div>
+            <div class="portal-property-row">
+              <span>4401 Magnolia Blvd, Houston TX</span>
+              <span>LTR</span>
+              <span>100%</span>
+              <span>$2,100</span>
+              <span><span class="service-tag" style="margin:1px;">Direct</span></span>
+            </div>
+            <div class="portal-property-row">
+              <span>612 Bayshore Dr, Sarasota FL</span>
+              <span>STR</span>
+              <span>88%</span>
+              <span>$3,920</span>
+              <span><span class="service-tag" style="margin:1px;">Airbnb</span><span class="service-tag" style="margin:1px;">VRBO</span></span>
+            </div>
+            <div class="portal-property-row">
+              <span>2200 Elm St, Denver CO</span>
+              <span>STR</span>
+              <span>91%</span>
+              <span>$4,650</span>
+              <span><span class="service-tag" style="margin:1px;">Airbnb</span><span class="service-tag" style="margin:1px;">Booking</span></span>
+            </div>
+            <div class="portal-property-row">
+              <span>710 Pine Ridge Rd, Cape Coral FL</span>
+              <span>MTR</span>
+              <span>100%</span>
+              <span>$2,890</span>
+              <span><span class="service-tag" style="margin:1px;">FF</span><span class="service-tag" style="margin:1px;">Direct</span></span>
+            </div>
+            <div class="portal-property-row">
+              <span>1505 Westheimer, Houston TX</span>
+              <span>PadSplit</span>
+              <span>88%</span>
+              <span>$6,240</span>
+              <span><span class="service-tag" style="margin:1px;">PadSplit</span></span>
+            </div>
+            <div class="portal-property-row">
+              <span>340 NW 5th Ave, Miami FL</span>
+              <span>STR</span>
+              <span>95%</span>
+              <span>$5,410</span>
+              <span><span class="service-tag" style="margin:1px;">Airbnb</span><span class="service-tag" style="margin:1px;">VRBO</span><span class="service-tag" style="margin:1px;">Booking</span></span>
+            </div>
+            <div class="portal-property-row">
+              <span>890 Market St, Portland OR</span>
+              <span>LTR</span>
+              <span>100%</span>
+              <span>$1,950</span>
+              <span><span class="service-tag" style="margin:1px;">Direct</span></span>
+            </div>
+            <div class="portal-property-row">
+              <span>55 Broken Bow Ln, Broken Bow OK</span>
+              <span>STR</span>
+              <span>82%</span>
+              <span>$3,780</span>
+              <span><span class="service-tag" style="margin:1px;">Airbnb</span><span class="service-tag" style="margin:1px;">VRBO</span></span>
+            </div>
+            <div class="portal-property-row">
+              <span>1122 Bourbon St, New Orleans LA</span>
+              <span>STR</span>
+              <span>96%</span>
+              <span>$4,890</span>
+              <span><span class="service-tag" style="margin:1px;">Airbnb</span><span class="service-tag" style="margin:1px;">VRBO</span><span class="service-tag" style="margin:1px;">Booking</span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Maintenance Tab -->
+        <div class="portal-panel" id="tab-maintenance">
+          <div class="portal-tickets">
+            <div class="portal-ticket">
+              <div>
+                <div class="portal-ticket-title">HVAC Unit Not Cooling — 612 Bayshore Dr</div>
+                <div style="font-size:var(--text-xs); color:var(--color-text-muted); margin-top:var(--space-xs);">Reported Apr 10, 2025 · Guest complaint</div>
+              </div>
+              <span class="portal-badge high">High</span>
+              <span class="portal-badge in-progress">In Progress</span>
+              <span style="color:var(--color-text-muted)">CoolAir HVAC LLC</span>
+            </div>
+            <div class="portal-ticket">
+              <div>
+                <div class="portal-ticket-title">Dishwasher Leak — 1842 Riverside Dr</div>
+                <div style="font-size:var(--text-xs); color:var(--color-text-muted); margin-top:var(--space-xs);">Reported Apr 8, 2025 · Turnover inspection</div>
+              </div>
+              <span class="portal-badge medium">Medium</span>
+              <span class="portal-badge open">Open</span>
+              <span style="color:var(--color-text-muted)">FlowFix Plumbing</span>
+            </div>
+            <div class="portal-ticket">
+              <div>
+                <div class="portal-ticket-title">Smart Lock Battery Replace — 927 Oak St</div>
+                <div style="font-size:var(--text-xs); color:var(--color-text-muted); margin-top:var(--space-xs);">Reported Apr 6, 2025 · Automated alert</div>
+              </div>
+              <span class="portal-badge low">Low</span>
+              <span class="portal-badge open">Open</span>
+              <span style="color:var(--color-text-muted)">In-House Tech</span>
+            </div>
+            <div class="portal-ticket">
+              <div>
+                <div class="portal-ticket-title">Exterior Paint Touch-Up — 305 Palm Ave</div>
+                <div style="font-size:var(--text-xs); color:var(--color-text-muted); margin-top:var(--space-xs);">Reported Mar 28, 2025 · Quarterly inspection</div>
+              </div>
+              <span class="portal-badge low">Low</span>
+              <span class="portal-badge resolved">Resolved</span>
+              <span style="color:var(--color-text-muted)">ProCoat Painting</span>
+            </div>
+            <div class="portal-ticket">
+              <div>
+                <div class="portal-ticket-title">Garage Door Sensor — 4401 Magnolia Blvd</div>
+                <div style="font-size:var(--text-xs); color:var(--color-text-muted); margin-top:var(--space-xs);">Reported Mar 22, 2025 · Tenant request</div>
+              </div>
+              <span class="portal-badge medium">Medium</span>
+              <span class="portal-badge resolved">Resolved</span>
+              <span style="color:var(--color-text-muted)">AllDoor Garage Co</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="portal-cta">
+          <strong>Your live portal activates at onboarding.</strong> — Real-time access from day one.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       MARKETS
+       ============================================================ -->
+  <section class="section" id="markets">
+    <div class="container">
+      <div class="section-label reveal">Our Markets</div>
+      <h2 class="section-title reveal">National Reach. Local Expertise.</h2>
+      <p class="section-subtitle reveal">Operating across high-growth markets with boots-on-the-ground teams and market-specific strategies.</p>
+
+      <div class="markets-grid">
+        <div class="market-chip reveal">Jacksonville, FL <span class="market-badge active">Active</span></div>
+        <div class="market-chip reveal">Tampa, FL <span class="market-badge active">Active</span></div>
+        <div class="market-chip reveal">Orlando, FL <span class="market-badge active">Active</span></div>
+        <div class="market-chip reveal">Sarasota, FL <span class="market-badge active">Active</span></div>
+        <div class="market-chip reveal">Cape Coral, FL <span class="market-badge active">Active</span></div>
+        <div class="market-chip reveal">Miami, FL <span class="market-badge active">Active</span></div>
+        <div class="market-chip reveal">Houston, TX <span class="market-badge active">Active</span></div>
+        <div class="market-chip reveal">San Antonio, TX <span class="market-badge expanding">Expanding</span></div>
+        <div class="market-chip reveal">Denver, CO <span class="market-badge active">Active</span></div>
+        <div class="market-chip reveal">Portland, OR <span class="market-badge expanding">Expanding</span></div>
+        <div class="market-chip reveal">Broken Bow, OK <span class="market-badge active">Active</span></div>
+        <div class="market-chip reveal">New Orleans, LA <span class="market-badge active">Active</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TESTIMONIALS
+       ============================================================ -->
+  <section class="section" id="testimonials">
+    <div class="container">
+      <div style="text-align:center; max-width:600px; margin:0 auto;">
+        <div class="section-label reveal">Owner Testimonials</div>
+        <h2 class="section-title reveal">Trusted by Property Owners Nationwide</h2>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-quote">"CoHost increased my Jacksonville STR revenue by 34% in the first quarter. Their dynamic pricing and guest communication is on another level. I went from self-managing 3 properties to truly passive income."</p>
+          <div class="testimonial-author">Marcus Thompson</div>
+          <div class="testimonial-role">3 STR Units · Jacksonville, FL</div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-quote">"Switching to PadSplit co-living with CoHost managing operations was a game-changer. My 4-bed in Orlando went from $1,800/mo to $4,200/mo gross. The owner portal makes tracking everything effortless."</p>
+          <div class="testimonial-author">Sarah Chen</div>
+          <div class="testimonial-role">2 PadSplit Properties · Orlando, FL</div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-quote">"I own properties in 4 different markets and CoHost manages all of them seamlessly. Their tech stack — smart locks, automated messaging, real-time reporting — is what sold me. 94% occupancy across my portfolio."</p>
+          <div class="testimonial-author">David Rodriguez</div>
+          <div class="testimonial-role">7 Mixed Units · Multi-Market</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       INTEGRATIONS MARQUEE
+       ============================================================ -->
+  <section class="integrations">
+    <div class="marquee" id="marquee">
+      <div class="marquee-item"><span class="marquee-dot"></span> PadSplit</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Airbnb</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> VRBO</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Furnished Finder</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Booking.com</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> TurboTenant</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> TTLock</div>
+      <!-- Duplicate for seamless loop -->
+      <div class="marquee-item"><span class="marquee-dot"></span> PadSplit</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Airbnb</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> VRBO</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Furnished Finder</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Booking.com</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> TurboTenant</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> TTLock</div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA / CONTACT
+       ============================================================ -->
+  <section class="section cta-section" id="contact">
+    <div class="container">
+      <div class="cta-inner">
+        <div class="section-label reveal">Get Started</div>
+        <h2 class="section-title reveal">Ready to Maximize Your Portfolio?</h2>
+        <p class="section-subtitle reveal" style="margin:0 auto;">Get a free property analysis and custom revenue projection. No obligations, no setup fees.</p>
+
+        <form class="cta-form reveal" id="contactForm" action="https://formspree.io/f/xpwdqdqk" method="POST">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your full name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+          </div>
+          <div class="form-group">
+            <label for="propertyType">Property Type</label>
+            <select id="propertyType" name="propertyType" required>
+              <option value="" disabled selected>Select type</option>
+              <option value="STR">Short-Term Rental</option>
+              <option value="MTR">Mid-Term Rental</option>
+              <option value="LTR">Long-Term Rental</option>
+              <option value="Co-Living">Co-Living / PadSplit</option>
+              <option value="Mixed">Mixed Portfolio</option>
+            </select>
+          </div>
+          <div class="form-group full-width">
+            <label for="units">Number of Units</label>
+            <input type="number" id="units" name="units" placeholder="How many units?" min="1">
+          </div>
+          <div class="cta-submit full-width">
+            <button type="submit" class="btn btn-primary" style="width:100%;">Get My Free Analysis</button>
+          </div>
+          <div class="cta-trust full-width">No setup fees · Free property analysis · Cancel anytime</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="#" class="nav-logo" style="display:inline-flex;">
+            <svg viewBox="0 0 36 36" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="18" width="32" height="16" rx="2" stroke="#00DDB8" stroke-width="1.5" fill="none"/>
+              <rect x="5" y="8" width="7" height="10" rx="1" stroke="#2E7BEF" stroke-width="1.5" fill="none"/>
+              <rect x="14" y="3" width="8" height="15" rx="1" stroke="#00DDB8" stroke-width="1.5" fill="none"/>
+              <rect x="24" y="6" width="7" height="12" rx="1" stroke="#2E7BEF" stroke-width="1.5" fill="none"/>
+            </svg>
+            <span class="nav-logo-text"><span>Co</span>Host Management</span>
+          </a>
+          <p class="footer-brand-desc">National done-for-you property management. AI-powered operations for short-term, mid-term, long-term, and co-living rentals.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z" stroke="currentColor" stroke-width="2" fill="none"/><rect x="2" y="9" width="4" height="12" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+            </a>
+            <a href="#" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3V2z" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-heading">Services</div>
+          <a href="#services" class="footer-link">Short-Term Rental</a>
+          <a href="#services" class="footer-link">Mid-Term Rental</a>
+          <a href="#services" class="footer-link">Long-Term Rental</a>
+          <a href="#services" class="footer-link">Co-Living / PadSplit</a>
+        </div>
+
+        <div>
+          <div class="footer-heading">Company</div>
+          <a href="#why" class="footer-link">About</a>
+          <a href="#how-it-works" class="footer-link">How It Works</a>
+          <a href="#markets" class="footer-link">Markets</a>
+          <a href="#portal" class="footer-link">Owner Portal</a>
+        </div>
+
+        <div>
+          <div class="footer-heading">Contact</div>
+          <a href="tel:+14072710754" class="footer-link">(407) 271-0754</a>
+          <a href="mailto:jordanrealtor21@gmail.com" class="footer-link">jordanrealtor21@gmail.com</a>
+          <a href="#contact" class="footer-link">Get a Free Analysis</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2025 CoHost Management. All rights reserved.</span>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/three-scene.js" defer></script>
+  <script src="assets/js/portal.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
