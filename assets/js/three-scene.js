@@ -1,256 +1,168 @@
-/* ============================================================
-   Three.js — Hero 3D Scene
-   Animated wireframe building cluster with circuit ground plane,
-   particles, fog, and mouse parallax.
-   ============================================================ */
-
 (function () {
   'use strict';
+  var c = document.getElementById('heroScene');
+  if (!c || typeof THREE === 'undefined') return;
 
-  const container = document.getElementById('heroScene');
-  if (!container || typeof THREE === 'undefined') return;
-
-  /* --- Renderer --- */
-  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  var W = c.clientWidth, H = c.clientHeight;
+  var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setSize(container.clientWidth, container.clientHeight);
+  renderer.setSize(W, H);
   renderer.setClearColor(0x000000, 0);
-  container.appendChild(renderer.domElement);
+  c.appendChild(renderer.domElement);
 
-  /* --- Scene & Camera --- */
-  const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x060D1A, 0.035);
+  var scene = new THREE.Scene();
+  scene.fog = new THREE.FogExp2(0x03080F, 0.04);
 
-  const camera = new THREE.PerspectiveCamera(
-    45,
-    container.clientWidth / container.clientHeight,
-    0.1,
-    100
-  );
-  camera.position.set(0, 4, 12);
-  camera.lookAt(0, 1.5, 0);
+  var camera = new THREE.PerspectiveCamera(42, W / H, 0.1, 100);
+  camera.position.set(0, 5, 12);
+  camera.lookAt(0, 1, 0);
 
-  /* --- Lights --- */
-  const ambient = new THREE.AmbientLight(0x2E7BEF, 0.3);
-  scene.add(ambient);
+  /* Lights */
+  scene.add(new THREE.AmbientLight(0x1A6FF5, 0.2));
+  var pl1 = new THREE.PointLight(0x00D4AA, 1.6, 25);
+  pl1.position.set(3, 7, 4);
+  scene.add(pl1);
+  var pl2 = new THREE.PointLight(0x1A6FF5, 1.2, 25);
+  pl2.position.set(-4, 5, -3);
+  scene.add(pl2);
 
-  const tealLight = new THREE.PointLight(0x00DDB8, 1.5, 20);
-  tealLight.position.set(2, 6, 4);
-  scene.add(tealLight);
+  /* Materials */
+  var tealLine = new THREE.LineBasicMaterial({ color: 0x00D4AA, transparent: true, opacity: 0.6 });
+  var blueLine = new THREE.LineBasicMaterial({ color: 0x1A6FF5, transparent: true, opacity: 0.45 });
+  var tealWire = new THREE.MeshBasicMaterial({ color: 0x00D4AA, wireframe: true, transparent: true, opacity: 0.12 });
+  var blueWire = new THREE.MeshBasicMaterial({ color: 0x1A6FF5, wireframe: true, transparent: true, opacity: 0.1 });
 
-  const blueLight = new THREE.PointLight(0x2E7BEF, 1.2, 20);
-  blueLight.position.set(-3, 4, -2);
-  scene.add(blueLight);
-
-  /* --- Materials --- */
-  const tealWire = new THREE.MeshBasicMaterial({
-    color: 0x00DDB8,
-    wireframe: true,
-    transparent: true,
-    opacity: 0.35
-  });
-
-  const blueWire = new THREE.MeshBasicMaterial({
-    color: 0x2E7BEF,
-    wireframe: true,
-    transparent: true,
-    opacity: 0.3
-  });
-
-  const tealEdge = new THREE.LineBasicMaterial({
-    color: 0x00DDB8,
-    transparent: true,
-    opacity: 0.6
-  });
-
-  const blueEdge = new THREE.LineBasicMaterial({
-    color: 0x2E7BEF,
-    transparent: true,
-    opacity: 0.5
-  });
-
-  /* --- Building Cluster --- */
-  const buildingGroup = new THREE.Group();
-
-  const buildings = [
-    { w: 1.2, h: 4.5, d: 1.2, x: 0,    z: 0,    mat: tealWire, edge: tealEdge },
-    { w: 1.0, h: 3.2, d: 1.0, x: -2,   z: 0.5,  mat: blueWire, edge: blueEdge },
-    { w: 1.4, h: 3.8, d: 1.0, x: 2,    z: -0.3, mat: blueWire, edge: blueEdge },
-    { w: 0.8, h: 2.5, d: 0.8, x: -1,   z: -1.8, mat: tealWire, edge: tealEdge },
-    { w: 1.1, h: 5.2, d: 1.1, x: 1,    z: -1.5, mat: tealWire, edge: tealEdge },
-    { w: 0.9, h: 2.8, d: 0.9, x: -2.8, z: -1.2, mat: blueWire, edge: blueEdge },
-    { w: 0.7, h: 2.0, d: 0.7, x: 3,    z: 1,    mat: tealWire, edge: tealEdge },
-    { w: 1.0, h: 3.5, d: 0.8, x: -0.5, z: 1.8,  mat: blueWire, edge: blueEdge },
+  /* Buildings */
+  var bldg = new THREE.Group();
+  var defs = [
+    { w:1.3, h:5.0, d:1.3, x:0,    z:0,    t:true  },
+    { w:1.0, h:3.4, d:1.0, x:-2.1, z:0.6,  t:false },
+    { w:1.5, h:4.0, d:1.0, x:2.1,  z:-0.4, t:false },
+    { w:0.9, h:2.6, d:0.9, x:-1.0, z:-2.0, t:true  },
+    { w:1.2, h:5.6, d:1.2, x:1.1,  z:-1.6, t:true  },
+    { w:0.8, h:2.2, d:0.8, x:-3.0, z:-1.0, t:false },
+    { w:0.7, h:1.8, d:0.7, x:3.2,  z:1.2,  t:true  },
+    { w:1.0, h:3.6, d:0.9, x:-0.6, z:2.0,  t:false },
+    { w:0.6, h:2.0, d:0.6, x:2.8,  z:-2.4, t:true  },
+    { w:0.8, h:2.8, d:0.8, x:-2.6, z:1.5,  t:false },
+    { w:1.1, h:4.2, d:0.8, x:0.4,  z:2.5,  t:true  },
+    { w:0.7, h:1.6, d:0.7, x:-3.5, z:-2.6, t:false },
   ];
-
-  buildings.forEach((b) => {
-    const geo = new THREE.BoxGeometry(b.w, b.h, b.d);
-
-    // Wireframe mesh
-    const mesh = new THREE.Mesh(geo, b.mat);
+  defs.forEach(function(b) {
+    var geo = new THREE.BoxGeometry(b.w, b.h, b.d);
+    var mat = b.t ? tealWire : blueWire;
+    var mesh = new THREE.Mesh(geo, mat);
     mesh.position.set(b.x, b.h / 2, b.z);
-    buildingGroup.add(mesh);
+    bldg.add(mesh);
 
-    // Glowing edges
-    const edges = new THREE.EdgesGeometry(geo);
-    const line = new THREE.LineSegments(edges, b.edge);
+    var edges = new THREE.EdgesGeometry(geo);
+    var line = new THREE.LineSegments(edges, b.t ? tealLine : blueLine);
     line.position.copy(mesh.position);
-    buildingGroup.add(line);
+    bldg.add(line);
   });
+  scene.add(bldg);
 
-  scene.add(buildingGroup);
+  /* Ground circuit grid */
+  var ground = new THREE.Group();
+  var grid = new THREE.GridHelper(16, 32, 0x00D4AA, 0x00D4AA);
+  grid.material.opacity = 0.06;
+  grid.material.transparent = true;
+  ground.add(grid);
 
-  /* --- Circuit Board Ground Plane --- */
-  const groundGroup = new THREE.Group();
-
-  // Base grid
-  const gridSize = 14;
-  const gridDiv = 28;
-  const gridHelper = new THREE.GridHelper(gridSize, gridDiv, 0x00DDB8, 0x00DDB8);
-  gridHelper.material.opacity = 0.08;
-  gridHelper.material.transparent = true;
-  groundGroup.add(gridHelper);
-
-  // Circuit traces
-  const traceMat = new THREE.LineBasicMaterial({
-    color: 0x00DDB8,
-    transparent: true,
-    opacity: 0.2
-  });
-
-  const traces = [
-    [[-5, 0, -3], [0, 0, -3], [0, 0, -1], [3, 0, -1]],
-    [[-4, 0, 2], [-1, 0, 2], [-1, 0, 0], [2, 0, 0], [2, 0, -2], [5, 0, -2]],
-    [[-3, 0, -5], [-3, 0, -2], [1, 0, -2], [1, 0, 3], [4, 0, 3]],
-    [[4, 0, -4], [2, 0, -4], [2, 0, 1], [-2, 0, 1], [-2, 0, 4]],
+  var trMat = new THREE.LineBasicMaterial({ color: 0x00D4AA, transparent: true, opacity: 0.15 });
+  var traces = [
+    [[-6,0,-3],[0,0,-3],[0,0,-1],[4,0,-1]],
+    [[-5,0,2],[-1,0,2],[-1,0,0],[3,0,0],[3,0,-2],[6,0,-2]],
+    [[-4,0,-5],[-4,0,-2],[2,0,-2],[2,0,3],[5,0,3]],
+    [[5,0,-4],[2,0,-4],[2,0,1],[-2,0,1],[-2,0,5]],
+    [[-3,0,4],[1,0,4],[1,0,1],[4,0,1]],
   ];
-
-  traces.forEach((pts) => {
-    const verts = pts.map((p) => new THREE.Vector3(p[0], p[1], p[2]));
-    const geo = new THREE.BufferGeometry().setFromPoints(verts);
-    const line = new THREE.Line(geo, traceMat);
-    groundGroup.add(line);
+  traces.forEach(function(pts) {
+    var verts = pts.map(function(p) { return new THREE.Vector3(p[0], p[1], p[2]); });
+    var g = new THREE.BufferGeometry().setFromPoints(verts);
+    ground.add(new THREE.Line(g, trMat));
   });
 
-  // Circuit nodes (small glowing dots at intersections)
-  const nodeMat = new THREE.MeshBasicMaterial({
-    color: 0x00DDB8,
-    transparent: true,
-    opacity: 0.5
-  });
-
-  const nodePositions = [
-    [0, 0.05, -3], [0, 0.05, -1], [3, 0.05, -1],
-    [-1, 0.05, 2], [-1, 0.05, 0], [2, 0.05, 0],
-    [2, 0.05, -2], [-3, 0.05, -2], [1, 0.05, -2],
-    [1, 0.05, 3], [2, 0.05, -4], [2, 0.05, 1],
-    [-2, 0.05, 1], [-2, 0.05, 4]
+  var dotMat = new THREE.MeshBasicMaterial({ color: 0x00D4AA, transparent: true, opacity: 0.45 });
+  var dotGeo = new THREE.SphereGeometry(0.07, 8, 8);
+  var dotPositions = [
+    [0,0.05,-3],[0,0.05,-1],[4,0.05,-1],[-1,0.05,2],[3,0.05,0],
+    [3,0.05,-2],[-4,0.05,-2],[2,0.05,-2],[2,0.05,3],[2,0.05,-4],
+    [-2,0.05,1],[-2,0.05,5],[1,0.05,4],[4,0.05,1]
   ];
-
-  const nodeGeo = new THREE.SphereGeometry(0.08, 8, 8);
-  nodePositions.forEach((p) => {
-    const dot = new THREE.Mesh(nodeGeo, nodeMat);
-    dot.position.set(p[0], p[1], p[2]);
-    groundGroup.add(dot);
+  dotPositions.forEach(function(p) {
+    var d = new THREE.Mesh(dotGeo, dotMat);
+    d.position.set(p[0], p[1], p[2]);
+    ground.add(d);
   });
+  scene.add(ground);
 
-  scene.add(groundGroup);
-
-  /* --- Floating Particles --- */
-  const particleCount = 120;
-  const particleGeo = new THREE.BufferGeometry();
-  const positions = new Float32Array(particleCount * 3);
-  const velocities = [];
-
-  for (let i = 0; i < particleCount; i++) {
-    positions[i * 3] = (Math.random() - 0.5) * 16;
-    positions[i * 3 + 1] = Math.random() * 10;
-    positions[i * 3 + 2] = (Math.random() - 0.5) * 16;
-    velocities.push({
-      x: (Math.random() - 0.5) * 0.003,
-      y: Math.random() * 0.005 + 0.002,
-      z: (Math.random() - 0.5) * 0.003
-    });
+  /* Particles */
+  var pCount = 80;
+  var pGeo = new THREE.BufferGeometry();
+  var pos = new Float32Array(pCount * 3);
+  var vel = [];
+  for (var i = 0; i < pCount; i++) {
+    pos[i*3]   = (Math.random()-0.5)*18;
+    pos[i*3+1] = Math.random()*12;
+    pos[i*3+2] = (Math.random()-0.5)*18;
+    vel.push({ x:(Math.random()-0.5)*0.002, y:Math.random()*0.006+0.002, z:(Math.random()-0.5)*0.002 });
   }
+  pGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  var pMat = new THREE.PointsMaterial({ color: 0x00D4AA, size: 0.055, transparent: true, opacity: 0.5, sizeAttenuation: true });
+  scene.add(new THREE.Points(pGeo, pMat));
 
-  particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-
-  const particleMat = new THREE.PointsMaterial({
-    color: 0x00DDB8,
-    size: 0.06,
-    transparent: true,
-    opacity: 0.6,
-    sizeAttenuation: true
+  /* Mouse */
+  var mx = 0, my = 0;
+  document.addEventListener('mousemove', function(e) {
+    mx = (e.clientX / window.innerWidth - 0.5) * 2;
+    my = (e.clientY / window.innerHeight - 0.5) * 2;
   });
 
-  const particles = new THREE.Points(particleGeo, particleMat);
-  scene.add(particles);
+  /* Animate */
+  var clock = new THREE.Clock();
+  function loop() {
+    requestAnimationFrame(loop);
+    var t = clock.getElapsedTime();
 
-  /* --- Mouse Parallax --- */
-  let mouseX = 0;
-  let mouseY = 0;
-  let targetRotX = 0;
-  let targetRotY = 0;
+    bldg.rotation.y = t * 0.06;
 
-  document.addEventListener('mousemove', (e) => {
-    mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-    mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-  });
+    // Mouse parallax — lerp
+    camera.position.x += (mx * 2 - camera.position.x) * 0.015;
+    camera.position.y += (-my * 1.2 + 5 - camera.position.y) * 0.015;
+    camera.lookAt(0, 1, 0);
 
-  /* --- Animation Loop --- */
-  const clock = new THREE.Clock();
-
-  function animate() {
-    requestAnimationFrame(animate);
-
-    const elapsed = clock.getElapsedTime();
-
-    // Slow Y rotation
-    buildingGroup.rotation.y = elapsed * 0.08;
-
-    // Mouse parallax (desktop only)
-    targetRotY = mouseX * 0.15;
-    targetRotX = mouseY * 0.08;
-    camera.position.x += (targetRotY * 2 - camera.position.x + 0) * 0.02;
-    camera.position.y += (-targetRotX * 1.5 - camera.position.y + 4) * 0.02;
-    camera.lookAt(0, 1.5, 0);
-
-    // Animate particles
-    const posArray = particleGeo.attributes.position.array;
-    for (let i = 0; i < particleCount; i++) {
-      posArray[i * 3] += velocities[i].x;
-      posArray[i * 3 + 1] += velocities[i].y;
-      posArray[i * 3 + 2] += velocities[i].z;
-
-      // Reset particles that float too high
-      if (posArray[i * 3 + 1] > 10) {
-        posArray[i * 3] = (Math.random() - 0.5) * 16;
-        posArray[i * 3 + 1] = 0;
-        posArray[i * 3 + 2] = (Math.random() - 0.5) * 16;
+    // Particles
+    var a = pGeo.attributes.position.array;
+    for (var i = 0; i < pCount; i++) {
+      a[i*3]   += vel[i].x;
+      a[i*3+1] += vel[i].y;
+      a[i*3+2] += vel[i].z;
+      if (a[i*3+1] > 12) {
+        a[i*3]   = (Math.random()-0.5)*18;
+        a[i*3+1] = 0;
+        a[i*3+2] = (Math.random()-0.5)*18;
       }
     }
-    particleGeo.attributes.position.needsUpdate = true;
+    pGeo.attributes.position.needsUpdate = true;
 
-    // Pulse lights
-    tealLight.intensity = 1.5 + Math.sin(elapsed * 1.5) * 0.3;
-    blueLight.intensity = 1.2 + Math.cos(elapsed * 1.2) * 0.2;
+    pl1.intensity = 1.6 + Math.sin(t*1.3)*0.3;
+    pl2.intensity = 1.2 + Math.cos(t*1.1)*0.2;
 
     renderer.render(scene, camera);
   }
+  loop();
 
-  animate();
-
-  /* --- Resize --- */
-  function onResize() {
-    const w = container.clientWidth;
-    const h = container.clientHeight;
-    camera.aspect = w / h;
+  window.addEventListener('resize', function() {
+    W = c.clientWidth; H = c.clientHeight;
+    camera.aspect = W / H;
     camera.updateProjectionMatrix();
-    renderer.setSize(w, h);
-  }
-
-  window.addEventListener('resize', onResize);
-
-  // Initial sizing after layout
-  requestAnimationFrame(onResize);
+    renderer.setSize(W, H);
+  });
+  requestAnimationFrame(function() {
+    W = c.clientWidth; H = c.clientHeight;
+    camera.aspect = W / H;
+    camera.updateProjectionMatrix();
+    renderer.setSize(W, H);
+  });
 })();
